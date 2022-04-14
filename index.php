@@ -8,6 +8,8 @@
  * Version: 1.0
  */
 
+defined( 'ABSPATH' ) or die( 'No script kiddies please!' );
+
 //  Criando menu
 function menuVslPlayer() {
     add_menu_page('VSL Player', 'VSL Player', 'manage_options', 'vsl-player', 'vslPlayer', 'dashicons-media-video', 30);
@@ -82,15 +84,47 @@ function vslPlayerShortcode(){
     $textBtn = get_option('vsl-text-btn');
     $btnBg = get_option('vsl-btn-bg');
     $btnText = get_option('vsl-btn-text');
-    $html = '<div class="vsl-player">
-                <video controls>
-                    <source src="'.$videoUrl.'" type="video/mp4">
-                </video>
-                <div class="vsl-player-btn" style="background-color: '.$btnBg.'; color: '.$btnText.'">
-                    <a href="'.$linkBtn.'">'.$textBtn.'</a>
-                </div>
-            </div>';
+    $html = '
+    <video class="myVideo" controls muted="">
+        <source src="'.$videoUrl.'" type="video/mp4">
+    </video>
+    <div class="play btn-play" style="background-color: '.$btnBg.'; color: '.$btnText.'">
+        <h3>Seu vídeo já começou</h3>
+        <i class="fa-solid fa-volume-slash"></i>
+        <h3>Clique para ouvir</h3>
+    </div>
+    <div class="pause btn-play" style="background-color: '.$btnBg.'; color: '.$btnText.'">
+        <h3>Não perca essa oportunidade!</h3>
+        <i class="fa-solid fa-play-pause"></i>
+        <h3>continue assistindo</h3>
+    </div>
+    <div class="btncompra">
+        <a href="'.$linkBtn.'" target="_blank" class="btn-link-compra">
+            '.$textBtn.'
+        </a>
+    </div>
+    ';
     return $html;
 }
 add_shortcode('vsl-player', 'vslPlayerShortcode');
-?>
+
+function vslPlayerHead(){
+        echo '
+            <!-- batata -->
+            <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+            <link rel="stylesheet" href="/includes/css/player.css">
+        ';
+    }
+    
+// Adicionar css 
+add_action('wp_head', 'addStyles');
+add_action('wp_footer', 'addScripts');
+
+// 
+function addStyles(){
+    wp_enqueue_style('vsl-player-css', plugins_url('includes/css/player.css', __FILE__));
+}
+
+function addScripts(){
+    wp_enqueue_script('vsl-player-js', plugins_url('includes/js/player.js', __FILE__), array('jquery'), '1.0', true);
+}
