@@ -78,17 +78,17 @@ function vslPlayer(){
 }
 // Criando shortcode
 function vslPlayerShortcode(){
-    $videoUrl = get_option('vsl-video-url');
+    $vp_videoUrl = get_option('vsl-video-url');
     $timeBtn = get_option('vsl-time-btn');
-    $linkBtn = get_option('vsl-link-btn');
-    $textBtn = get_option('vsl-text-btn');
-    $btnBg = get_option('vsl-btn-bg');
-    $btnText = get_option('vsl-btn-text');
-    $html = '
+    $vp_linkBtn = get_option('vsl-link-btn');
+    $vp_textBtn = get_option('vsl-text-btn');
+    $vp_btnBg = get_option('vsl-btn-bg');
+    $vp_btnText = get_option('vsl-btn-text');
+    $vp_html = '
     <video class="myVideo" controls muted="">
-        <source src="'.$videoUrl.'" type="video/mp4">
+        <source src="'.$vp_videoUrl.'" type="video/mp4">
     </video>
-    <div class="play btn-play" style="background-color: '.$btnBg.'; color: '.$btnText.'">
+    <div class="play btn-play" style="background-color: '.$vp_btnBg.'; color: '.$vp_btnText.'">
         <h3>Seu vídeo já começou</h3>
         <i class="fa-solid fa-volume-slash"></i>
         <h3>Clique para ouvir</h3>
@@ -99,12 +99,12 @@ function vslPlayerShortcode(){
         <h3>continue assistindo</h3>
     </div>
     <div class="btncompra">
-        <a href="'.$linkBtn.'" target="_blank" class="btn-link-compra" style="background-color: '.$btnBg.'; color: '.$btnText.' ">
-            '.$textBtn.'
+        <a href="'.$vp_linkBtn.'" target="_blank" class="btn-link-compra" style="background-color: '.$btnBg.'; color: '.$btnText.' ">
+            '.$vp_textBtn.'
         </a>
     </div>
     ';
-    return $html;
+    return $vp_html;
 }
 add_shortcode('vsl-player', 'vslPlayerShortcode');
 
