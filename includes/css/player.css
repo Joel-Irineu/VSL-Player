@@ -30,7 +30,6 @@
     border-radius: 10px;
     cursor: pointer;
     padding: 20px 50px;
-    background: #121212;
 }
 @media(max-width: 400px){
     .btn-play h3{

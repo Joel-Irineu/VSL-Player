@@ -127,7 +127,7 @@ function addStyles(){
 }
 
 function addScripts(){
-    wp_enqueue_script('vsl-player-js', plugins_url('includes/js/player.js', __FILE__), array('jquery'), '1.0', true);
+    wp_enqueue_script('vsl-player-js', plugins_url('includes/js/player.js', __FILE__));
 }
 
 function fontAwesome(){
