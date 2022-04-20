@@ -1,7 +1,7 @@
 .myVideo{
     width: 100%;
 }
-.btn-play{
+.play.btn-play, .pause.btn-play{
     text-align: center;
     border-radius: 10px;
     margin-bottom: 20%;
@@ -24,6 +24,7 @@
     text-align: center;
     text-decoration: none;
     font-weight: bold;
+    display: none;
 }
 .btncompra a{
     text-align: center;
