@@ -18,7 +18,7 @@ add_action('admin_menu', 'menuVslPlayer');
 
 // Criando página
 function vslPlayer(){
-    if(array_key_exists('gerarVsl, $_POST')){
+    if(array_key_exists('gerarVsl', $_POST)){
         update_option('vsl-video-url', $_POST['vsl-video-url']);
         update_option('vsl-time-btn', $_POST['vsl-time-btn']);
         update_option('vsl-time-btn-color', $_POST['vsl-time-btn-color']);
