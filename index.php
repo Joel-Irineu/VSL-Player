@@ -99,7 +99,7 @@ function vslPlayerShortcode(){
         <h3>continue assistindo</h3>
     </div>
     <div class="btncompra">
-        <a href="'.$linkBtn.'" target="_blank" class="btn-link-compra">
+        <a href="'.$linkBtn.'" target="_blank" class="btn-link-compra" style="background-color: '.$btnBg.'; color: '.$btnText.' ">
             '.$textBtn.'
         </a>
     </div>
@@ -118,6 +118,7 @@ function vslPlayerHead(){
     
 // Adicionar css 
 add_action('wp_head', 'addStyles');
+add_action('wp_head', 'fontAwesome');
 add_action('wp_footer', 'addScripts');
 
 // 
@@ -127,4 +128,8 @@ function addStyles(){
 
 function addScripts(){
     wp_enqueue_script('vsl-player-js', plugins_url('includes/js/player.js', __FILE__), array('jquery'), '1.0', true);
+}
+
+function fontAwesome(){
+    echo '<link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.1.1/css/all.css" />';
 }
